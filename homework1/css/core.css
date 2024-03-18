@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Britannic Bold", sans-serif;
+    background: #dcdcdc;
+}
+
+.container {
+    margin-top: 20px;
+    margin-left: 230px;
+    min-width: 900px;
+    max-width: min-content;
+}
+
+
+
+
+li {
+    list-style-type: none;
+}
+p{
+    font-family: sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+
+hr{
+    width: 350px;
+    color: white;
+}
+
+h5{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+h4{
+    font-size: 35px;
+    font-weight: lighter;
+}
+
+h6{
+    color: #2e888c;
+    font-size: 13px;
+}
+
+.gray{
+    width: 80px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #969595;
+    color: #030303;
+    font-weight: bold;
+    border: none;
+}
+
+.gray_line{
+    color: #fcfcfc;
+    border: 1px solid;
+}
+
+
+/*header*/
+
+.inner_header{
+    width: 100%;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.search h2{
+    font-size: 30px;
+}
+
+
+input{
+    background-color: #dcdcdc;
+    border: 1px solid #adadad;
+    width: 210px;
+    height: 25px;
+    margin-top: 11px;
+    padding-left: 10px;
+    color: #030303;
+}
+
+input:focus {
+    outline: 1px solid #9d9d9d;
+}
+.menu{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    background: linear-gradient(to bottom, #ffffff, #cccccc);
+    box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.menu_link {
+    padding: 8px 25px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.shadow{
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    text-decoration: none;
+    color: #47a7ce;
+}
+
+
+
+a:link{
+    color: #030303;
+}
+
+a:hover {
+    color: #030303;
+}
+a:active {
+    color: #030303;
+}
+
+/*footer*/
+footer{
+    background-color: #7e7e7e;
+    padding: 10px;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    min-width: 100%;
+    max-width: min-content;
+}
+
+footer a{
+    color: #030303;
+}
