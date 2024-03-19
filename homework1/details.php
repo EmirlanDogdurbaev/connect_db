@@ -18,8 +18,6 @@ $result = pg_query($connect, $query);
 if (!$result) {
     die("Ошибка выполнения запроса.");
 }
-
-// Обработка результатов запроса
 $row = pg_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
