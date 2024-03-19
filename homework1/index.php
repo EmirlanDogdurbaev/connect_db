@@ -66,6 +66,7 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                     <img src="images/chemodan.png" alt="chemodan">
                 </div>
 
+
             </div>
         </div>
     </div>
@@ -73,24 +74,26 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
     <div class="cards">
         <div class="container">
             <div class="cards_inner">
-                <div class="card">
-                    <h3>Web Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis sed dui tincidunt
-                        sagittis.</p>
-                    <button>More</button>
-                </div>
-                <div class="card">
-                    <h3>CSS Template</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis sed dui tincidunt
-                        sagittis.</p>
-                    <button>More</button>
-                </div>
-                <div class="card">
-                    <h3>Interactive Media</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis sed dui tincidunt
-                        sagittis.</p>
-                    <button>More</button>
-                </div>
+
+                <?php
+                $query = "SELECT * FROM cards";
+                $result = pg_query($connect, $query);
+
+                if (!$result) {
+                    die("Ошибка выполнения запроса.");
+                }
+
+                while ($row = pg_fetch_assoc($result)) {
+                    echo "
+                            <div class='card'>
+                                      <h3>{$row['title']}</h3>
+                                     <p>{$row['content']}</p>
+                                      <a href='details.php?id={$row['id']}'>more</a>
+                             </div>";
+                }
+                pg_free_result($result);
+
+                ?>
             </div>
         </div>
     </div>
@@ -102,13 +105,11 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                     <h4>Latest Update</h4>
 
                     <?php
-                    $result = pg_query($connect, "SELECT * FROM news");
-                    $myrow = pg_fetch_array($result);
+                    $res = pg_query($connect, "SELECT * FROM news");
 
-
-                    while ($myrow) {
+                    while ($myrow = pg_fetch_assoc($res)) {
                         printf(' 
-                             <article class="mews_cont">
+                            <article class="mews_cont">
                                 <div class="news">
                                     <img src="%s" alt="small_picture">
                                     <div class="text-content">
@@ -119,11 +120,13 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                                 <div class="gray_line"></div>
                                 <span class="date">June 18, 2048</span>
                             </article>
-                    ', $myrow['img'], $myrow['title'], $myrow['content']);
-
-                        $myrow = pg_fetch_array($result);
+                        ', $myrow['img'], $myrow['title'], $myrow['content']);
                     }
+
+                    // Освобождаем ресурсы
+                    pg_free_result($res);
                     ?>
+
                     <button class="gray">View All</button>
                 </div>
                 <div class="introduction">
@@ -163,6 +166,7 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
             </div>
         </div>
     </div>
+
 
     <footer>
         <p>Copyright<a href="index.html"> &copy; 2048 My company Name</a></p>

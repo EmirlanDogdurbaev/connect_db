@@ -1,17 +1,3 @@
-<?php
-$DB_HOST = "localhost";
-$DB_PORT = "5436";
-$DB_USER = "emirlandogdurbaev";
-$DB_PASSWORD = "023120";
-$database = "mydb";
-$connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USER password=$DB_PASSWORD");
-
-if ($connect) {
-    echo "Connected...";
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,33 +7,37 @@ if ($connect) {
 </head>
 <body>
 
-<table border="2">
-    <tr>
-        <th>ID</th>
-        <th>TITLE</th>
-        <th>Description</th>
-        <th>Image</th>
+<?php
+$DB_HOST = "localhost";
+$DB_PORT = "5436";
+$DB_USER = "emirlandogdurbaev";
+$DB_PASSWORD = "023120";
+$database = "web";
 
-    </tr>
+// Подключение к базе данных
+$connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USER password=$DB_PASSWORD");
+if (!$connect) {
+    die("Ошибка соединения с базой данных.");
+}
 
-    <?php
-    $result = pg_query($connect, "SELECT * FROM user");
-    $myrow = pg_fetch_array($result);
+// Запрос для получения всех карточек
+$query = "SELECT * FROM cards";
+$result = pg_query($connect, $query);
 
-    while ($myrow) {
-        printf('<tr>
-        <td>%s</td>
-        <td>%s</td>
-        <td>%s</td>
-        <td>%s</td>
-    </tr>', $myrow['id'], $myrow['username'], $myrow['price'], $myrow['region']);
+if (!$result) {
+    die("Ошибка выполнения запроса.");
+}
 
-        $myrow = pg_fetch_array($result);
-    }
-    ?>
+// Обработка результатов запроса и вывод списка карточек
+while ($row = pg_fetch_assoc($result)) {
+    echo "<li><a href='db.php?id={$row['id']}'>{$row['title']}</a></li>";
+}
 
+// Освобождаем ресурсы
+pg_free_result($result);
+pg_close($connect);
+?>
 
-</table>
 
 </body>
 </html>
