@@ -74,7 +74,6 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
     <div class="cards">
         <div class="container">
             <div class="cards_inner">
-
                 <?php
                 $query = "SELECT * FROM cards";
                 $result = pg_query($connect, $query);
@@ -84,19 +83,21 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                 }
 
                 while ($row = pg_fetch_assoc($result)) {
-                    echo "
-                            <div class='card'>
-                                      <h3>{$row['title']}</h3>
-                                     <p>{$row['content']}</p>
-                                      <a href='details.php?id={$row['id']}'>more</a>
-                             </div>";
+                    echo "<div class='card'>
+          <img src='{$row['img']}' alt='dasd' width='200' height='50'/>
+                          <h3>{$row['title']}</h3>
+                          <p>{$row['content']}</p>
+                
+                          <a href='details.php?id={$row['id']}'>more</a>
+                      </div>";
                 }
-                pg_free_result($result);
 
+                pg_free_result($result);
                 ?>
             </div>
         </div>
     </div>
+
 
     <div class="page_content">
         <div class="container">
@@ -109,7 +110,7 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
 
                     while ($myrow = pg_fetch_assoc($res)) {
                         printf(' 
-                            <article class="mews_cont">
+                            <article class="news_cont">
                                 <div class="news">
                                     <img src="%s" alt="small_picture">
                                     <div class="text-content">
