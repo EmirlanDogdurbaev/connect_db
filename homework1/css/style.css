@@ -81,7 +81,8 @@
 .card img{
     width: 90%;
     height: 100px;
-    margin: 0 auto;
+    margin: 0 auto !important;
+    margin-bottom: 10px !important;
 }
 
 .card p {

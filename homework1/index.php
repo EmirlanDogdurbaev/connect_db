@@ -27,24 +27,24 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                 <div class="search">
                     <h2>Light Grey</h2>
                     <form>
-                        <input type="text" id="search" name="q" placeholder="Search..."/>
+                        <label for="search"></label><input type="text" id="search" name="q" placeholder="Search..."/>
                     </form>
                 </div>
                 <ul class="menu">
                     <li class="menu_link shadow">
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li class="menu_link shadow">
-                        <a href="pages/news.html">Latest News</a>
+                        <a href="/">Latest News</a>
                     </li>
                     <li class="menu_link shadow">
-                        <a href="pages/porfolio.html">Portfolio</a>
+                        <a href="/">Portfolio</a>
                     </li>
                     <li class="menu_link shadow">
-                        <a href="pages/aboutus.html">About Us</a>
+                        <a href="/">About Us</a>
                     </li>
                     <li class="menu_link">
-                        <a href="pages/contact.html">Contact</a>
+                        <a href="/">Contact</a>
                     </li>
                 </ul>
 
@@ -136,11 +136,11 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
                         <div class="text_content_2">
                             <p class="cursive">Lorem Ipsum is simply dummy text of the printing and typesetting
                                 industry. Lorem Ipsum has been the industry's standard dummy text </p>
-                            <p><a href="index.html">Light Gray Template</a> is provided for your personal or commercial
+                            <p><a href="/">Light Gray Template</a> is provided for your personal or commercial
                                 websites. Validate
-                                <a href="">XTML</a> & <a href="index.html">CSS</a>. Credits go to <a href="index.html">Free
+                                <a href="">XTML</a> & <a href="/">CSS</a>. Credits go to <a href="/">Free
                                     Photos</a> for photos and
-                                <a href="index.html">Free Vector</a> for icons used in this template.Lorem Ipsum is
+                                <a href="/">Free Vector</a> for icons used in this template.Lorem Ipsum is
                                 simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                                 industry's standard dummy text </p>
                         </div>
@@ -170,7 +170,7 @@ $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USE
 
 
     <footer>
-        <p>Copyright<a href="index.html"> &copy; 2048 My company Name</a></p>
+        <p>Copyright<a href="/"> &copy; 2048 My company Name</a></p>
     </footer>
 </div>
 </body>

@@ -5,13 +5,11 @@ $DB_USER = "emirlandogdurbaev";
 $DB_PASSWORD = "023120";
 $database = "web";
 
-// Подключение к базе данных
 $connect = pg_connect("host=$DB_HOST port=$DB_PORT dbname=$database user=$DB_USER password=$DB_PASSWORD");
 if (!$connect) {
     die("Ошибка соединения с базой данных.");
 }
 
-// Обработка операции создания новой записи
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     $title = $_POST['title_value'];
     $content = $_POST['content_value'];
@@ -28,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     }
 }
 
-// Обработка операции обновления записи
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $cardId = $_POST['card_id'];
     $title = $_POST['title'];
@@ -46,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     }
 }
 
-// Обработка операции удаления записи
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
     $cardId = $_POST['card_id'];
 
@@ -61,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
     }
 }
 
-// Обработка операции чтения записи
 $cardId = $_GET['id'];
 $query = "SELECT * FROM cards WHERE id = $cardId";
 $result = pg_query($connect, $query);
@@ -175,7 +170,6 @@ $row = pg_fetch_assoc($result);
         ?>
     </div>
 
-    <!-- Форма для создания новой записи -->
     <div class="create-form" style="margin-top: 20px;">
         <h2 style="margin-bottom: 10px;">Добавить новую карточку</h2>
         <form method="POST" style="display: flex; flex-direction: column; max-width: 100%;">
